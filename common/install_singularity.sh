@@ -6,7 +6,7 @@ mkdir Git
 cd Git
 
 # Release suid
-git clone https://github.com/singularityware/singularity.git release
+git clone https://github.com/sylabs/singularity.git release
 cd release
 git checkout ${SINGULARITY_RELEASE_BRANCH}
 ./autogen.sh
@@ -19,7 +19,7 @@ cd /home/vagrant/Git
 #
 
 # Release nosuid
-git clone https://github.com/singularityware/singularity.git release-nosuid
+git clone https://github.com/sylabs/singularity.git release-nosuid
 cd release-nosuid
 git checkout ${SINGULARITY_RELEASE_BRANCH}
 ./autogen.sh
@@ -32,7 +32,7 @@ cd /home/vagrant/Git
 #
 
 # Dev suid
-git clone https://github.com/singularityware/singularity.git development
+git clone https://github.com/sylabs/singularity.git development
 cd development
 git checkout ${SINGULARITY_DEVELOPMENT_BRANCH}
 ./autogen.sh
@@ -45,7 +45,7 @@ cd /home/vagrant/Git
 #
 
 # Release nosuid
-git clone https://github.com/singularityware/singularity.git development-nosuid
+git clone https://github.com/sylabs/singularity.git development-nosuid
 cd development-nosuid
 git checkout ${SINGULARITY_DEVELOPMENT_BRANCH}
 ./autogen.sh
