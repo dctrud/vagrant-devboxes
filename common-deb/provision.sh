@@ -1,9 +1,13 @@
 #!/bin/bash
 
-# Now some base repo stuff
-apt-get -y install build-essential
-apt-get -y install automake autoconf libarchive-dev libssl-dev libtool uuid-dev git valgrind vim squashfs-tools
+apt-get update
 
-apt-get -y install golang
+# Useful development things
+apt-get install curl git valgrind vim wget
+
+# Singularity dependencies
+apt-get install -y build-essential \
+  libssl-dev uuid-dev libgpgme11-dev libseccomp-dev \
+  pkg-config squashfs-tools cryptsetup
 
 
