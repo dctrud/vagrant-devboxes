@@ -1,54 +1,21 @@
-SINGULARITY_RELEASE_BRANCH=release-2.4
-SINGULARITY_DEVELOPMENT_BRANCH=development-2.x
+# Install go
+export VERSION=1.12.6 OS=linux ARCH=amd64
+wget -q -O /tmp/go${VERSION}.${OS}-${ARCH}.tar.gz https://dl.google.com/go/go${VERSION}.${OS}-${ARCH}.tar.gz && \
+  sudo tar -C /opt -xzf /tmp/go${VERSION}.${OS}-${ARCH}.tar.gz
+export PATH="$PATH:/opt/go/bin"
+
+# Install golangci-lint
+curl -sfL https://install.goreleaser.com/github.com/golangci/golangci-lint.sh |
+  sh -s -- -b $(go env GOPATH)/bin v1.17.0
 
 cd /home/vagrant
 mkdir Git
 cd Git
 
-# Release suid
-git clone https://github.com/sylabs/singularity.git release
-cd release
-git checkout ${SINGULARITY_RELEASE_BRANCH}
-./autogen.sh
-./configure --prefix=/home/vagrant/singularity-${SINGULARITY_RELEASE_BRANCH}
+git clone https://github.com/sylabs/singularity.git
+cd singularity
+./mconfig
+cd ./builddir
 make
 sudo make install
 
-#
-cd /home/vagrant/Git
-#
-
-# Release nosuid
-git clone https://github.com/sylabs/singularity.git release-nosuid
-cd release-nosuid
-git checkout ${SINGULARITY_RELEASE_BRANCH}
-./autogen.sh
-./configure --prefix=/home/vagrant/singularity-${SINGULARITY_RELEASE_BRANCH}-nosuid --disable-suid
-make
-make install
-
-#
-cd /home/vagrant/Git
-#
-
-# Dev suid
-git clone https://github.com/sylabs/singularity.git development
-cd development
-git checkout ${SINGULARITY_DEVELOPMENT_BRANCH}
-./autogen.sh
-./configure --prefix=/home/vagrant/singularity-${SINGULARITY_DEVELOPMENT_BRANCH}
-make
-sudo make install
-
-#
-cd /home/vagrant/Git
-#
-
-# Release nosuid
-git clone https://github.com/sylabs/singularity.git development-nosuid
-cd development-nosuid
-git checkout ${SINGULARITY_DEVELOPMENT_BRANCH}
-./autogen.sh
-./configure --prefix=/home/vagrant/singularity-${SINGULARITY_DEVELOPMENT_BRANCH}-nosuid --disable-suid
-make
-make install
