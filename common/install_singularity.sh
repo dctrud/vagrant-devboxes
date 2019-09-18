@@ -19,3 +19,7 @@ cd ./builddir
 make
 sudo make install
 
+# Setup mapping for fakeroot
+echo "vagrant:100000:65536" | sudo tee /etc/subuid
+echo "vagrant:100000:65536" | sudo tee /etc/subgid
+
