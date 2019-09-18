@@ -6,6 +6,6 @@ yum -y install epel-release
 yum -y install curl git valgrind vim-enhanced wget
 # Singularity requirements
 yum -y groupinstall "Development tools"
-yum install -y golang openssl-devel libuuid-devel \
+yum install -y openssl-devel libuuid-devel \
   libseccomp-devel squashfs-tools cryptsetup
 
