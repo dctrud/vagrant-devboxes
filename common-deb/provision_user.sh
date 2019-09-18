@@ -3,7 +3,7 @@
 cd
 
 # My dotfiles
-git clone https://github.com/dctrud/dotfiles.git ~/.dotfiles
+git clone https://git.randomroad.net/dave/dotfiles.git ~/.dotfiles
 .dotfiles/bin/dotfiles
 
 
